@@ -56,7 +56,6 @@ steps:
 
 
    source bin/updateProcessScheduleStatus.sh\
-
       atomName="${{ parameters.atomName }}"\
       processName="${{ parameters.processName }}" \
       enabled=${{ parameters.enabled }}
