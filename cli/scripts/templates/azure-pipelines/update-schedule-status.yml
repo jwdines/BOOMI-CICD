@@ -18,7 +18,7 @@ parameters:
 
 - name: enabled
   type: string
-  default: 'true'
+  default: "true"
 
 variables:
 - group: boomicicd
