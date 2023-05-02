@@ -73,8 +73,8 @@ steps:
       env="${{ parameters.env}}" \
       processName="${{ parameters.processName }}" \
 #      componentId="${{ parameters.componentId }}" \
-      componentType=${{ parameters.componentType }} \
-#      componentVersion=${{ parameters.componentVersion }} \
+      componentType="${{ parameters.componentType }}" \
+#      componentVersion="${{ parameters.componentVersion }}" \
       packageVersion="${{ parameters.packageVersion }}" \
       notes="${{ parameters.notes }}" \
       listenerStatus=${{ parameters.listenerStatus }}
