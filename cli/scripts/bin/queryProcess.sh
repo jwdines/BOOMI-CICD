@@ -17,7 +17,7 @@ fi
 createJSON
 
 callAPI
-cat out.json
+
 extract $id componentId
 
 clean
