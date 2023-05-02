@@ -54,8 +54,8 @@ steps:
     export baseURL=https://api.boomi.com/api/rest/v1/$accountId
     echo "Base URL is ${baseURL}"
 
-    jq
-    xmllint
+    apt install -y jq
+    apt install -y xmllint
     
     source bin/updateProcessScheduleStatus.sh\
       atomName="${{ parameters.atomName }}"\
