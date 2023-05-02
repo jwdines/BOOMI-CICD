@@ -1,19 +1,55 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-trigger:
-- main
+parameters:
+- name: env
+  type: string
 
+- name: componentName
+  type: string
+  default: ""
+  
+- name: componentType
+  type: string
+  default: 'process'
+
+- name: packageVersion
+  type: string
+
+variables:
+- group: boomicicd
+
+# need a new image with SonarRunner and xmllint (libxml2-utils) and jq
 pool:
-  vmImage: ubuntu-latest
+  vmImage: 'ubuntu-latest'
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
 
 - script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+    cd cli/scripts
+    # Mostly constants
+    export h1="$(h1)"
+    export h2="$(h2)"
+    export WORKSPACE=$(pwd)
+    # Get values from user or parameter store
+    # The following credentials can be stored in parameter store and retrieved dynamically 
+    # Example to retrieve form an AWS store "$(aws ssm get-parameter --region xx --with-decryption --output text --query Parameter.Value --name /Parameter.name)
+    export accountName="$(accountName)"
+    export accountId=$(accountId)
+    export authToken=$(authToken)
+    
+    # Keys that can change
+    export VERBOSE="$(VERBOSE)" # Bash verbose output; set to true only for testing, will slow execution.
+    export SLEEP_TIMER="$(SLEEP_TIMER)" # Delays curl request to the platform to set the rate under 5 requests/second
+    
+    # Derived keys
+    export baseURL=https://api.boomi.com/api/rest/v1/$accountId
+    export regressionTestURL="$(regressionTestURL)" # URL for regression test suite framework.
+    echo "Base URL is ${baseURL}"
+
+    source bin/deleteDeployment.sh \
+     env="${{ parameters.env}}" \
+     componentName="${{ parameters.componentName }}" \
+     componentType=${{ parameters.componentType }} \
+     packageVersion="${{ parameters.packageVersion }}"
+
+  displayName: 'Boomi Deploy Package'
