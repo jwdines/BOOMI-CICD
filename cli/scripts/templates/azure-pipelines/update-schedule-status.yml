@@ -9,12 +9,12 @@ parameters:
 
 - name: atomName
   type: string
-  default: "Prod Atom Cloud"
+  default: ""
 
 
 - name: processName
   type: string
-  default: "Get Execution Records"
+  default: ""
 
 
 - name: enabled
