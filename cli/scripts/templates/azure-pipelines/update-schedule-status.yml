@@ -58,9 +58,6 @@ steps:
       processName="${{ parameters.processName }}" \
       enabled=${{ parameters.enabled }}
 
-    cat  "${WORKSPACE}"/out.json
-    cat  "${WORKSPACE}"/tmp.json
-
   displayName: 'Disable, Enable Process Schedule'
 
 
