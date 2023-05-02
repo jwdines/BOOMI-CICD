@@ -6,19 +6,20 @@
 # enabled - "true" for enabling the process, "false" for disabling the process
 parameters:
 
-- name: processName
-  type: string
-  default: "Get Execution Records"
-
 
 - name: atomName
   type: string
   default: "Prod Atom Cloud"
 
 
+- name: processName
+  type: string
+  default: "Get Execution Records"
+
+
 - name: enabled
   type: string
-  default: "true"
+  default: "false"
 
 variables:
 - group: boomicicd
@@ -53,6 +54,9 @@ steps:
     export baseURL=https://api.boomi.com/api/rest/v1/$accountId
     echo "Base URL is ${baseURL}"
 
+    jq
+    xmllint
+    
     source bin/updateProcessScheduleStatus.sh\
       atomName="${{ parameters.atomName }}"\
       processName="${{ parameters.processName }}" \
