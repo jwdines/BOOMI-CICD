@@ -18,7 +18,6 @@ createJSON
 
 callAPI
 cat out.json
-cat tmp.json
 extract $id componentId
 
 clean
