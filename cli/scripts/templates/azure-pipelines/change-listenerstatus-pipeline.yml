@@ -24,7 +24,7 @@ parameters:
 
 - name: enabled
   type: string
-  default: 'RUNNING'  
+  default: 'pause'  
 
 
 
@@ -65,6 +65,6 @@ steps:
       componentId=${{ parameters.componentId }} \
       atomName="${{ parameters.atomName }}" \
       atomType=${{ parameters.atomType }} \
-      enabled=${{ parameters.enabled }}
+      action=${{ parameters.enabled }}
     
   displayName: 'Boomi Change Listener Status'
