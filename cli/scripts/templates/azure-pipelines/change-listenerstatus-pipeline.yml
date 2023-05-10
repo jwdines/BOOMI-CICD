@@ -22,6 +22,7 @@ parameters:
   type: string
   default: '*'
 
+# value is either pause or resume
 - name: enabled
   type: string
   default: 'pause'  
