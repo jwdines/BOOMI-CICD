@@ -21,13 +21,11 @@ source bin/queryComponentMetadataName.sh componentName="${componentName}" compon
 
 source bin/queryPackagedComponent.sh componentId=${componentId} componentType=${componentType} packageVersion=${packageVersion}
 
-#source bin/queryDeployedComponent.sh envId=${envId} componentId=${componentId}
-
 source bin/queryDeployedPackageActive.sh packageId=${packageId} envId=${saveEnvId} version=${savePackageVersion} active="true"
 
 echov "deploymentId=${deploymentId}"
 
-source bin/deleteDeployedPackage.sh deploymentID=${deploymentID}
+source bin/deleteDeployedPackage.sh deploymentId=${deploymentId}
 
 if [ "$ERROR" -gt "0" ]
 then
