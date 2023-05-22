@@ -17,7 +17,7 @@ savePackageVersion=${packageVersion}
 source bin/queryEnvironment.sh env="$env" classification="*"
 saveEnvId=${envId}
 
-source bin/queryComponentMetadataName.sh componentName=${componentName} componentType=${componentType} 
+source bin/queryComponentMetadataName.sh componentName="${componentName}"" componentType=${componentType} 
 
 source bin/queryPackagedComponent.sh componentId=${componentId} componentType=${componentType} packageVersion=${packageVersion}
 
