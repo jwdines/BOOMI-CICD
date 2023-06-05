@@ -52,4 +52,4 @@ steps:
      componentType=${{ parameters.componentType }} \
      packageVersion="${{ parameters.packageVersion }}"
 
-  displayName: 'Boomi Deploy Package'
+  displayName: 'Boomi Undeploy Package'
