@@ -25,7 +25,7 @@ source bin/queryDeployedPackageActive.sh packageId=${packageId} envId=${saveEnvI
 
 echov "deploymentId=${deploymentId}"
 
-if [ "$deploymentId" == "" ]
+if [[ -z "$deploymentId" ]]
 then
   return 255;
 fi
