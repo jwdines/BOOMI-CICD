@@ -32,7 +32,8 @@ then
 
 	source bin/deployPackage.sh env=${env} processName="${componentName}" packageVersion=${targetPackageVersion} notes="Rollback to version ${targetPackageVersion}" listenerStatus=${listenerStatus}
 else
-	echoi "Package and version is not currently deployed.  Rollback invalid."
+	echoe "Package and version is not currently deployed.  Rollback invalid."
+	return 255;
 fi
 
 if [ "$ERROR" -gt "0" ]
