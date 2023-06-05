@@ -53,7 +53,7 @@ steps:
     export regressionTestURL="$(regressionTestURL)" # URL for regression test suite framework.
     echo "Base URL is ${baseURL}"
 
-    source bin/rollbackDeployment.sh env="Development" componentName="Hello" componentType="process" currentPackageVersion="5.2" targetPackageVersion="5.1" listenerStatus="RUNNING"
+    source bin/rollbackDeployment.sh env="${{ parameters.env}}" componentName="${{ parameters.componentName}}" componentType="${{ parameters.componentType}}" currentPackageVersion="${{ parameters.currentPackageVersion}}" targetPackageVersion="${{ parameters.targetPackageVersion}}" listenerStatus="RUNNING"
      env="${{ parameters.env}}" \
      componentName="${{ parameters.componentName }}" \
      componentType="${{ parameters.componentType }}" \
