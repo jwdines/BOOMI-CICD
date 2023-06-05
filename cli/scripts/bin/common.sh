@@ -190,9 +190,11 @@ function getAPI {
 }
 
 function deleteAPI {
-        unset ERROR ERRORSTR ERROR_MESSAGE
-        if [ ! -z ${SLEEP_TIMER} ]; then sleep ${SLEEP_TIMER}; fi
+  unset ERROR ERRORSTR ERROR_MESSAGE
+  if [ ! -z ${SLEEP_TIMER} ]; then sleep ${SLEEP_TIMER}; fi
+
   curl -s -X DELETE -u $authToken -H "${h1}" -H "${h2}" "$URL" > "${WORKSPACE}"/out.json
+  export ERROR=0
   export ERRORSTR=$(cat "${WORKSPACE}"/out.json)
    if [[ ! $ERRORSTR=="{true}" ]]; then
            export ERROR_MESSAGE="Error in API Delete Call.  Return Value is ${ERROR}"
