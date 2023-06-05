@@ -61,4 +61,4 @@ steps:
      targetPackageVersion="${{ parameters.targetPackageVersion }}" \
      listenerStatus="${{ parameters.listenerStatus}}"
 
-  displayName: 'Boomi Deploy Package'
+  displayName: 'Boomi Rollback Deployed Package'
