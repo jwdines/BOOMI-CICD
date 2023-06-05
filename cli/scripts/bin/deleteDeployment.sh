@@ -25,6 +25,11 @@ source bin/queryDeployedPackageActive.sh packageId=${packageId} envId=${saveEnvI
 
 echov "deploymentId=${deploymentId}"
 
+if [ "{$deploymentId}" == null]
+then
+  return 255;
+fi
+
 source bin/deleteDeployedPackage.sh deploymentId=${deploymentId}
 
 if [ "$ERROR" -gt "0" ]
