@@ -14,7 +14,7 @@ fi
 source bin/queryEnvironment.sh env="$env" classification="*"
 saveEnvId=${envId}
 
-source bin/queryComponentMetadataName.sh componentName=${componentName} componentType=${componentType}
+source bin/queryComponentMetadataName.sh componentName="${componentName}" componentType=${componentType}
 
 source bin/queryPackagedComponent.sh componentId=${componentId} componentType=${componentType} packageVersion=${currentPackageVersion}
 
@@ -30,7 +30,7 @@ then
 	componentType=""
 	deploymentId=""
 
-	source bin/deployPackage.sh env=${env} processName=${componentName} packageVersion=${targetPackageVersion} notes="Rollback to version ${targetPackageVersion}" listenerStatus=${listenerStatus}
+	source bin/deployPackage.sh env=${env} processName="${componentName}" packageVersion=${targetPackageVersion} notes="Rollback to version ${targetPackageVersion}" listenerStatus=${listenerStatus}
 else
 	echoi "Package and version is not currently deployed.  Rollback invalid."
 fi
