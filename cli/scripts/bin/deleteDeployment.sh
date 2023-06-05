@@ -27,6 +27,7 @@ echov "deploymentId=${deploymentId}"
 
 if [ "$deploymentId" == "null" ]
 then
+  echoe "Cannot delete Deployed Package.  Deployment ID was null."
   return 255;
 fi
 
