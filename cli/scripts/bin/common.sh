@@ -193,19 +193,13 @@ function deleteAPI {
         unset ERROR ERROR_MESSAGE
         if [ ! -z ${SLEEP_TIMER} ]; then sleep ${SLEEP_TIMER}; fi
   curl -s -X DELETE -u $authToken -H "${h1}" -H "${h2}" "$URL" > "${WORKSPACE}"/out.json
-  export ERROR=$(jq  -r . "${WORKSPACE}"/out.json 2>&1 > /dev/null)
-   if [[ ! -z $ERROR ]]; then
-           export ERROR_MESSAGE=`cat "${WORKSPACE}"/out.json`
+  export ERROR=$(cat "${WORKSPACE}"/out.json)
+   if [[ ! $ERROR=="{true}" ]]; then
+           export ERROR_MESSAGE="Error in API Delete Call.  Return Value is ${ERROR}"
            export ERROR=251
            echoee "$ERROR_MESSAGE"
            return 251
    fi
-  export ERROR=`jq  -r . "${WORKSPACE}"/out.json  |  grep '"@type": "Error"' | wc -l`
-  if [[ $ERROR -gt 0 ]]; then
-          export ERROR_MESSAGE=`jq -r .message "${WORKSPACE}"/out.json`
-                echoee "$ERROR_MESSAGE"
-         return 251
-  fi
   if [ "$VERBOSE" == "true" ]
   then
    cat  "${WORKSPACE}"/out.json >> "${WORKSPACE}"/outs.json
