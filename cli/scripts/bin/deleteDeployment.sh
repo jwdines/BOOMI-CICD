@@ -12,16 +12,16 @@ then
         return 255;
 fi
 
-savePackageVersion=${packageVersion}
+savePackageVersion="${packageVersion}"
 
 source bin/queryEnvironment.sh env="$env" classification="*"
 saveEnvId=${envId}
 
 source bin/queryComponentMetadataName.sh componentName="${componentName}" componentType=${componentType} 
 
-source bin/queryPackagedComponent.sh componentId=${componentId} componentType=${componentType} packageVersion=${packageVersion}
+source bin/queryPackagedComponent.sh componentId=${componentId} componentType=${componentType} packageVersion="${packageVersion}"
 
-source bin/queryDeployedPackageActive.sh packageId=${packageId} envId=${saveEnvId} version=${savePackageVersion} active="true"
+source bin/queryDeployedPackageActive.sh packageId=${packageId} envId=${saveEnvId} version="${savePackageVersion}" active="true"
 
 echov "deploymentId=${deploymentId}"
 
